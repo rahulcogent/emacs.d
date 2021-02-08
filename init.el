@@ -29,7 +29,7 @@
 (load-user-file "magit-settings.el")
 (load-user-file "which-key-config.el")
 (load-user-file "smartparens-config.el")
-(load-user-file "doom-theme-config.el")
+;;(load-user-file "doom-theme-config.el")
 (load-user-file "auto-complete-settings.el")
 (load-user-file "ace-window-settings.el")
 (load-user-file "avy-settings.el")
@@ -38,6 +38,7 @@
 (load-user-file "flycheck-settings.el")
 (load-user-file "compilation-settings.el")
 (load-user-file "undo-tree-settings.el")
+(load-user-file "yasnippets-settings.el")
 
 ;; Global settings and key bindings
 (load-user-file "global-settings.el")
@@ -55,7 +56,7 @@
  '(flycheck-googlelint-linelength "120")
  '(flycheck-googlelint-root "project/src")
  '(flycheck-googlelint-verbose "3")
- '(undo-tree-history-directory-alist '((".*" . "/Users/rahul.sharma/.emacs.d/undo"))))
+ '(undo-tree-history-directory-alist '((".*" . "/home/renovo/.emacs.d/undo"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

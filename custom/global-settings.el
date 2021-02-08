@@ -27,5 +27,12 @@
 ;; set my init filt to be this file
 (setq user-init-file "~/.emacs.d/init.el")
 
+;; Add to executable path
+(setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
+(setq exec-path (append exec-path '("/opt/local/bin")))
+
+;; Additional gtags path
+(setenv "GTAGSLIBPATH" "/home/renovo/.conan")
+(setenv "GTAGSTHROUGH" "true")
 ;;;
 ;;; global-settings.el ends here

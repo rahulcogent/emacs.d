@@ -30,5 +30,10 @@
  '(flycheck-googlelint-root "project/src")
  '(flycheck-googlelint-linelength "120"))
 
-(provide 'flycheck)
-;; flycheck-settings.el ends here
+;; start google-c-style with emacs
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+(provide 'flycheck-settings)
+;;; flycheck-settings.el ends here

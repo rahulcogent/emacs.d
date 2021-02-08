@@ -1,6 +1,7 @@
 ;;; helm-cfg.el -- This file has helm related configurations
 
 (straight-use-package 'helm)
+(straight-use-package 'helm-gtags)
 
 (blink-cursor-mode -1)
 (require 'helm-config)
@@ -36,6 +37,7 @@
 
 (global-set-key (kbd "C-.") 'dabbrev-expand)
 (define-key minibuffer-local-map (kbd "C-.") 'dabbrev-expand)
+(setq helm-candidate-number-limit 1000)
 
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
@@ -43,5 +45,28 @@
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
       helm-echo-input-in-header-line t)
+
+;;; Enable helm-gtags-mode
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+;; customize
+(custom-set-variables
+ '(helm-gtags-path-style 'relative)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-auto-update t))
+
+;; helm gtags bindings
+(with-eval-after-load 'helm-gtags
+  (define-key helm-gtags-mode-map (kbd "s-]") 'helm-gtags-dwim)
+  (define-key helm-gtags-mode-map (kbd "s-[") 'helm-gtags-pop-stack)
+  (define-key helm-gtags-mode-map (kbd "s-r") 'helm-gtags-find-rtag)
+  (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+  (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history))
+
+;; helm projectile settings
+(setq projectile-completion-system 'helm)
+(setq projectile-indexing-method 'alien)
 ;;;
 ;;; helm-cfg.el ends here
